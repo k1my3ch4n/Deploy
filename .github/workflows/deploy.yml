@@ -44,10 +44,4 @@ jobs:
           username: ${{ secrets.FRONT_USERNAME }}
           password: ${{ secrets.FRONT_PASSWORD }}
           port: ${{ secrets.FRONT_PORT }}
-          script: |
-            whoami
-            docker pull ${{ secrets.NCP_CONTAINER_REGISTRY }}/vite
-            docker stop $(docker ps -a -q)
-            docker rm $(docker ps -a -q)
-            docker run -d -p 3000:80 ${{ secrets.NCP_CONTAINER_REGISTRY }}/vite
-            docker image prune -f
+          script: whoami
