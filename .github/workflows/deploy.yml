@@ -46,6 +46,7 @@ jobs:
           port: ${{ secrets.FRONT_PORT }}
           script: |
             whoami
+            sudo docker login ${{ secrets.NCP_CONTAINER_REGISTRY }} -u ${{ secrets.NCP_ACCESS_KEY }}  -p ${{ secrets.NCP_SECRET_KEY }}
             docker pull ${{ secrets.NCP_CONTAINER_REGISTRY }}/vite
             docker stop $(docker ps -a -q)
             docker rm $(docker ps -a -q)
