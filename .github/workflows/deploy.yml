@@ -45,6 +45,7 @@ jobs:
           password: ${{ secrets.FRONT_PASSWORD }}
           port: ${{ secrets.FRONT_PORT }}
           script: |
+            whoami
             docker pull ${{ secrets.NCP_CONTAINER_REGISTRY }}/vite
             docker stop $(docker ps -a -q)
             docker rm $(docker ps -a -q)
