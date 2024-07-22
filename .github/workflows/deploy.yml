@@ -48,7 +48,7 @@ jobs:
             whoami
             sudo docker login ${{ secrets.NCP_CONTAINER_REGISTRY }} -u ${{ secrets.NCP_ACCESS_KEY }}  -p ${{ secrets.NCP_SECRET_KEY }}
             docker pull ${{ secrets.NCP_CONTAINER_REGISTRY }}/vite
-            docker stop $(docker ps -a -q)
-            docker rm $(docker ps -a -q)
-            docker run -d -p 3000:80 ${{ secrets.NCP_CONTAINER_REGISTRY }}/vite
+            sudo docker stop $(docker ps -a -q)
+            sudo docker rm $(docker ps -a -q)
+            docker run -d -p 80:80 ${{ secrets.NCP_CONTAINER_REGISTRY }}/vite
             docker image prune -f
